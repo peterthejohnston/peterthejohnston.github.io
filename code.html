@@ -45,91 +45,43 @@
         <h1>Code</h1>
         <hr/>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales leo a risus rhoncus rhoncus. Donec scelerisque sit amet mi in tempor. Nulla id neque nec consectetur. Etiam erat lorem, dapibus eu elementum in, vestibulum nec diam. Mauris viverra libero vel imperdiet pretium. Fusce maximus massa risus, nec condimentum metus gravida eu.</p>
-        <pre><div class="code">/**
- * Adjust the Z-order of all selected item appropriately.
- * @param {boolean} forward true if forward, false if backward
- */
-lucid.view.render.Viewport.prototype.adjustSelectionZOrder = function(forward) {
-    if(this.selection.getItemsSize() != 1) {
-        return;
-    }
-
-    this.gui.getDocument().startUndoBatch();
-    var activeGroup = this.getActiveGroup();
-    var me = this;
-
-    goog.array.forEach(this.pages, function(page) {
-        var parentObj = activeGroup || page;
-        var allItems = parentObj.getZOrderedChildren();
-        allItems = goog.array.filter(allItems,function(item) {return item.parent == activeGroup});
-        var allItemsLength = allItems.length;
-
-        var forAllItems = function(i) {
-            var item = allItems[i];
-            var itembb = item.getBoundingBox();
-            var itemId = item.getId();
-            if (me.selection.isItemSelected(itemId, page.id) && !item.isLocked) {
-                var otherItem = null;
-                var forEachItem = function(j) {
-                    var obb = allItems[j].getBoundingBox();
-                    if(lucid.math.Box.overlap(itembb, obb)){
-                        otherItem = allItems[j];
-                        return true;
-                    }
-                    return false;
-                };
-                if (forward) {
-                    for (var j = i + 1; j < allItemsLength; j++){
-                        if (forEachItem(j)) break;
-                    }
-                } else {
-                    for(var j = i - 1; j >= 0; j--){
-                        if (forEachItem(j)) break;
-                    }
-                }
-
-                if(otherItem){
-                    forEachItem = function(i) {
-                        otherItem = allItems[i];
-                        var ZOrder = item.getProperties().get('ZOrder');
-                        me.document.runAction(new lucid.model.Action(lucid.model.ActionType.SetProperty, {
-                            'id':itemId,
-                            'Property':'ZOrder',
-                            'Value': otherItem.getProperties().get('ZOrder')
-                        }));
-
-                        me.document.runAction(new lucid.model.Action(lucid.model.ActionType.SetProperty, {
-                            'id':otherItem.getId(),
-                            'Property':'ZOrder',
-                            'Value': ZOrder
-                        }));
-                    };
-                    if (forward) {
-                        for (i = i + 1; i <= j; i++) {
-                            forEachItem(i);
-                        }
-                    } else {
-                        for (i = i - 1; i >= j; i--) {
-                            forEachItem(i);
-                        }
-                    }
-                    return true;
-                }
-            }
-            return false;
-        }
-        if (forward) {
-            for (var i = 0; i < allItemsLength - 1; i++) {
-                if (forAllItems(i)) break;
-            }
-        } else {
-            for (var i = 1; i < allItemsLength; i++) {
-                if (forAllItems(i)) break;
-            }
-        }
-    });
-    this.document.endUndoBatch();
-}</div></pre>
+        <pre><div class="code lua">function love.draw()
+	
+	-- Create viewport
+	love.graphics.scale(2, 2)
+	love.graphics.translate(-viewX, 0)
+	
+	love.graphics.draw(background, viewX, 0)
+	
+	for i = 0, npipes - 1 do
+		pipes[i]:draw()
+	end
+	
+	bird:draw()
+	
+	if bird.xspeed == 0 and not bird.dead then
+		love.graphics.draw(ground, groundX0, 200)
+		love.graphics.draw(ground, groundX1, 200)
+		love.graphics.draw(ground, groundX2, 200)
+	else
+		love.graphics.draw(ground, math.floor(viewX / 154) * 154 + groundoffset, 200)
+		love.graphics.draw(ground, (math.floor(viewX / 154) + 1) * 154 + groundoffset, 200)
+		love.graphics.draw(ground, (math.floor(viewX / 154) - 1) * 154 + groundoffset, 200)
+	end
+	
+	if bird.xspeed == 0 and not bird.dead then
+		love.graphics.draw(getready, 29, 60)
+		love.graphics.draw(diagram, 50 + 14, 110)
+	end
+	
+	if score > 9 then
+		love.graphics.draw(numbers[math.floor(score / 10)], viewX + 72 - 7, 18)
+		love.graphics.draw(numbers[score % 10], viewX + 72 + 1, 18)
+	else
+		love.graphics.draw(numbers[score % 10], viewX + 72 - 3, 18)
+	end
+	
+end</div></pre>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales leo a risus rhoncus rhoncus. Donec scelerisque sit amet mi in tempor. Nulla porttitor id neque nec consectetur. Etiam erat lorem, dapibus eu elementum in, vestibulum nec diam. Mauris viverra libero vel imperdiet pretium. Fusce maximus massa risus, nec condimentum metus gravida eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales leo a risus rhoncus rhoncus. Donec scelerisque sit amet mi in tempor. Nulla porttitor id neque nec consectetur. Etiam erat lorem, dapibus eu elementum in, vestibulum nec diam. Mauris viverra libero vel imperdiet pretium. Fusce maximus massa risus, nec condimentum metus gravida eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sodales leo a risus rhoncus rhoncus. Donec scelerisque sit amet mi in tempor. Nulla porttitor id neque nec consectetur. Etiam erat lorem, dapibus eu elementum in, vestibulum nec diam. Mauris viverra libero vel imperdiet pretium. Fusce maximus massa risus, nec condimentum metus gravida eu. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
