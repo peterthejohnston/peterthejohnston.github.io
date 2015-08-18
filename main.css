@@ -1,0 +1,156 @@
+a {
+  color: #ffffff;
+}
+
+a:hover {
+  color: #ffffff;
+}
+
+header {
+  padding: 2rem 1rem;
+  background-color: #303030;
+}
+
+header a {
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+
+header a:hover {
+  text-decoration: none;
+}
+
+header .title {
+  font-size: 24px;
+}
+
+.title a {
+  text-transform: lowercase;
+  font-weight: bold;
+}
+
+header .item a {
+  padding: 6px;
+  margin-left: 30px;
+  border: 2px solid #303030;
+  transition: all 0.2s ease-in-out;
+}
+
+header .item a:hover {
+  border: 2px solid #ffffff;
+}
+
+header .item a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+header .item a.active {
+  border: 2px solid #ffffff;
+}
+
+header .item {
+  font-size: 14px;
+  margin: 10px 0px;
+}
+
+header li {
+  display: inline;
+}
+
+.page {
+  padding: 20px;
+}
+
+.page img {
+  /*padding: 20px 0px;*/
+  display: block;
+  margin: auto;
+}
+
+.page h1 {
+  font-family: "Open Sans";
+  font-size: 28px;
+}
+
+.page h2 {
+  font-family: "Open Sans";
+  font-size: 20px;
+}
+
+.page ul {
+  color: #666666;
+  font-family: "Poly", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+p {
+  color: #666666;
+  font-family: "Poly", serif;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+footer {
+  background-color: #303030;
+  width: 100%;
+  padding: 3rem 1rem;
+}
+
+ul.social {
+  overflow: auto;
+}
+ 
+ul.social li {
+  list-style-type: none;
+  float: left;
+}
+
+ul li a i:hover {
+  opacity: .7;
+}
+ 
+ul.social li a i {
+  background: #ffffff;
+  color: #000000;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  font-size: 14px;
+  text-align: center;
+  margin-right: 10px;
+  padding: 18%;
+}
+
+footer .contact {
+  text-align: right;
+}
+
+.image {
+  display: inline-block;
+  margin: 10px;
+  /*outline: 1px solid orange;*/
+}
+
+.image img {
+  width: 270px;
+  height: 180px;
+  object-fit: scale-down;
+  padding: 0px;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 2em 0;
+  padding: 0;
+}
+
+.container {
+  /*outline: 1px solid orange;*/
+}

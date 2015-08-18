@@ -1,0 +1,4 @@
+use featherlight gallery?
+
+fix footer so it's always at bottom of page
+nav items fade in always, not just when hovered
