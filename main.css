@@ -1,8 +1,14 @@
-a {
+header a {
+  color: #ffffff;
+}
+footer a {
   color: #ffffff;
 }
 
-a:hover {
+header a:hover {
+  color: #ffffff;
+}
+footer a:hover {
   color: #ffffff;
 }
 
@@ -24,6 +30,7 @@ header a:hover {
 
 header .title {
   font-size: 24px;
+  text-align: center;
 }
 
 .title a {
