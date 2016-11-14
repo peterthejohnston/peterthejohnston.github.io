@@ -103,16 +103,36 @@ header li {
 }
 
 p {
-  color: #666666;
   font-family: "Poly", serif;
   font-size: 18px;
   line-height: 1.6;
+}
+
+.page p {
+  color: #666666;
+}
+
+#projects th, td {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+
+td.logo {
+  padding: 0px 20px;
+}
+
+.last {
+  padding-top: 30px;
 }
 
 footer {
   background-color: #303030;
   width: 100%;
   padding: 3rem 1rem;
+}
+
+footer p {
+    color: #A0A0A0;
 }
 
 ul.social {
