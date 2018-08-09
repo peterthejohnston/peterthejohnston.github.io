@@ -139,6 +139,7 @@ td.profile {
 
 td.logo {
   padding: 0px 30px;
+  filter: drop-shadow(0px 6px 6px grey);
 }
 
 .last {
